@@ -1,0 +1,2 @@
+2020-11-18 09:39:40,640 - robot_logger - INFO - Exiting example w/ pid: 16993
+2020-11-18 09:39:40,640 - robot_logger - ERROR - email failed! check credentials (either incorrect or not supplied)

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco>
+    <include file="shared_config.xml"></include>
+    <worldbody>
+        <include file="sawyer_xyz_base.xml"></include>
+        <body name="obj0" pos="0 0.6 0.05">
+            <geom name="objGeom0" type="box" pos="0 0 0" solimp="0.99 0.99 0.01"
+                  size="0.06 0.06 0.06" rgba="0.0 1.0 0.0 1" solref="0.01 1"
+                  contype="1" conaffinity="1" condim="4" 
+            />
+            <joint name="objGeom0_x" type="slide" pos="0 0 0" axis="1 0 0" range="-0.3 0.3" damping="0.00001"/>
+            <joint name="objGeom0_y" type="slide" pos="0 0 0" axis="0 1 0" range="-0.3 0.3" damping="0.00001"/>
+            <inertial pos="0 0 0" mass="0.000001" diaginertia="0.001 0.001 0.001"/>
+        </body>
+
+        <body name="obj1" pos="0 0.6 0.05">
+            <geom name="objGeom1" type="box" pos="0 0 0" solimp="0.99 0.99 0.01"
+                  size="0.06 0.06 0.06" rgba="1 0.5 1 1" solref="0.01 1"
+                  contype="1" conaffinity="1" condim="4" 
+            />
+            <joint name="objGeom1_x" type="slide" pos="0 0 0" axis="1 0 0" range="-0.3 0.3" damping="0.00001"/>
+            <joint name="objGeom1_y" type="slide" pos="0 0 0" axis="0 1 0" range="-0.3 0.3" damping="0.00001"/>
+            <inertial pos="0 0 0" mass="0.000001" diaginertia="0.001 0.001 0.001"/>
+        </body>
+      
+      <body name="obj2" pos="0 0.6 0.05">
+            <geom name="objGeom2" type="box" pos="0 0 0" solimp="0.99 0.99 0.01"
+                  size="0.06 0.06 0.06" rgba="0 0.0 1 1" solref="0.01 1"
+                  contype="1" conaffinity="1" condim="4" 
+            />
+            <joint name="objGeom2_x" type="slide" pos="0 0 0" axis="1 0 0" range="-0.3 0.3" damping="0.00001"/>
+            <joint name="objGeom2_y" type="slide" pos="0 0 0" axis="0 1 0" range="-0.3 0.3" damping="0.00001"/>
+            <inertial pos="0 0 0" mass="0.000001" diaginertia="0.001 0.001 0.001"/>
+        </body>
+        <camera mode="fixed" name="cam0" pos="-0.0 1.2 0.8" quat="0.924 -0.383 0 0"/>
+       
+    </worldbody>
+
+    <actuator>
+        <position ctrllimited="true" ctrlrange="-1 1" joint="r_close" kp="400"  user="1"/>
+        <position ctrllimited="true" ctrlrange="-1 1" joint="l_close" kp="400"  user="1"/>
+    </actuator>
+</mujoco>

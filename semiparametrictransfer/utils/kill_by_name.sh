@@ -1,0 +1,1 @@
+ps -ef | grep <name> | awk '{print $2}' | xargs kill -9 $2

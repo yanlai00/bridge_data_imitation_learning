@@ -1,0 +1,1 @@
+rsync -av datacol2:/home/dcuser1/trainingdata/robonetv2/toykitchen_fixed_cam/ $DATA/robonetv2/toykitchen_fixed_cam

@@ -1,0 +1,7 @@
+/home/febert/software/azcopy_linux_amd64_10.10.0/azcopy  copy toykitchen_v0 'https://robonetv2exp.blob.core.windows.net/robonetv2bucket/spt_data/trainingdata/' --recursive
+
+
+az storage remove -c robonetv2bucket -n spt_data/trainingdata/robonetv2 --recursive
+
+
+/home/febert/software/azcopy_linux_amd64_10.10.0/azcopy  sync $DATA/robonetv2 'https://robonetv2exp.blob.core.windows.net/robonetv2bucket/spt_data/trainingdata/robonetv2' --recursive --delete-destination true

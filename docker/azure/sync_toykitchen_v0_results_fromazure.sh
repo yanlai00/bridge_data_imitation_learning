@@ -1,0 +1,1 @@
+/home/$USER/software/azcopy_linux_amd64_10.10.0/azcopy  sync 'https://robonetv2exp.blob.core.windows.net/robonetv2bucket/spt_data/experiments/spt_experiments/modeltraining/widowx/real/toy_kitchen_v0'  /mount/harddrive/experiments/spt_experiments/modeltraining/widowx/real/toy_kitchen_v0 --recursive

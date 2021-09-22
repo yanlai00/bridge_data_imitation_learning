@@ -1,0 +1,58 @@
+Bootstrap: docker
+From: nvidia/cuda:10.1-cudnn7-devel-ubuntu16.04
+%post
+    PACKAGES=/packages
+    mkdir $PACKAGES
+    mkdir -p /global/scratch/btrabucco
+    mkdir -p /global/home/users/btrabucco
+    #Add nvidia driver paths to the environment variables
+    echo "\n #Nvidia driver paths \n" >> /environment
+    echo 'export PATH="/nvbin:$PATH"' >> /environment
+    echo 'export LD_LIBRARY_PATH="/nvlib:$LD_LIBRARY_PATH"' >> /environment
+    #Add CUDA paths
+    echo "\n #Cuda paths \n" >> /environment
+    echo 'export CPATH="/usr/local/cuda/include:$CPATH"' >> /environment
+    echo 'export PATH="/usr/local/cuda/bin:$PATH"' >> /environment
+    echo 'export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"' >> /environment
+    echo 'export CUDA_HOME="/usr/local/cuda"' >> /environment
+    touch /bin/nvidia-smi
+    touch /usr/bin/nvidia-smi
+    touch /usr/bin/nvidia-debugdump
+    touch /usr/bin/nvidia-persistenced
+    touch /usr/bin/nvidia-cuda-mps-control
+    touch /usr/bin/nvidia-cuda-mps-server
+    mkdir /etc/dcv
+    mkdir /var/lib/dcv-gl
+    mkdir /usr/lib64
+    mkdir /root/.ssh
+    echo "YOUR SSH PRIVATE KEY HERE" > /root/.ssh/id_rsa
+    echo "YOUR SSH PUBLIC KEY HERE" > /root/.ssh/id_rsa.pub
+    chmod 700 /root/.ssh
+    chmod 600 /root/.ssh/id_rsa
+    chmod 644 /root/.ssh/id_rsa.pub
+    apt-get update -y
+    apt-get install -y wget
+    apt-get install -y unzip
+    apt-get install -y git
+    mkdir $PACKAGES/.mujoco
+    wget https://www.roboti.us/download/mujoco200_linux.zip -O $PACKAGES/.mujoco/mujoco200_linux.zip
+    wget https://www.roboti.us/download/mjpro150_linux.zip -O $PACKAGES/.mujoco/mjpro150.zip
+    wget https://www.roboti.us/download/mjpro131_linux.zip -O $PACKAGES/.mujoco/mjpro131.zip
+    unzip $PACKAGES/.mujoco/mujoco200_linux.zip -d $PACKAGES/.mujoco/
+    unzip $PACKAGES/.mujoco/mjpro150.zip -d $PACKAGES/.mujoco/
+    unzip $PACKAGES/.mujoco/mjpro131.zip -d $PACKAGES/.mujoco/
+    echo "/home/febert/.mujoco/mjkey.txt" > $PACKAGES/.mujoco/mjkey.txt
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco200_linux/bin
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mjpro150/bin
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mjpro131/bin
+    cp -r $PACKAGES/.mujoco $HOME/.mujoco
+    wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O $PACKAGES/anaconda3.sh
+    bash $PACKAGES/anaconda3.sh -b -p $PACKAGES/anaconda3
+    . $PACKAGES/anaconda3/etc/profile.d/conda.sh
+    apt-get install -y libosmesa-dev libglew-dev patchelf libglfw3-dev build-essential
+    apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev
+    apt-get install -y cmake libopenmpi-dev python3-dev zlib1g-dev
+    conda create -n spt python=3.7 -y
+    conda activate spt
+    chmod -R 777 $PACKAGES
+    chmod -R 777 $PACKAGES/.mujoco

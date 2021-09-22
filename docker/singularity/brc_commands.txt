@@ -1,0 +1,17 @@
+# see the queue
+$ squeue -p savio3_2080ti
+or
+$ sq -u febert
+
+# available nodes
+sinfo -p savio3_2080ti
+
+# available QoS
+sacctmgr -p show associations user=$USER
+
+# interactive node
+srun -A co_rail -p savio2_1080ti --qos savio_lowprio -t 60 -N 1 -n 1 --cpus-per-task=2 --gres=gpu:1 --pty bash
+
+
+# get job history:
+ sacct --starttime 2014-07-01 --format=User,JobID,Jobname,partition,state,time,start,end,elapsed -u febert
