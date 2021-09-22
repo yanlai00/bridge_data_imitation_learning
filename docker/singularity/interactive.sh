@@ -1,1 +1,0 @@
-srun -A co_rail -p savio3_2080ti -t 60 -N 1 -n 1 --cpus-per-task=8 --gres=gpu:4 --pty bash

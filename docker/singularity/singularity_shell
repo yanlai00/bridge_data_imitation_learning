@@ -1,6 +1,0 @@
-SINGULARITYENV_DATA=/global/scratch/febert/trainingdata \
-SINGULARITYENV_EXP=/global/scratch/febert/experiments \
-SINGULARITYENV_APPEND_PATH=/global/home/users/febert/miniconda3/bin:$PATH \
-singularity shell --nv -B /usr/lib64 -B /var/lib/dcv-gl $IMG_DIR/singularity_bare_gpu.sif
-
-

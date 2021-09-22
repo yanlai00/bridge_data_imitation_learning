@@ -1,1 +1,0 @@
-/home/$USER/software/azcopy_linux_amd64_10.10.0/azcopy  sync $DATA/robonetv2/toykitchen_fixed_cam 'https://robonetv2exp.blob.core.windows.net/robonetv2bucket/spt_data/trainingdata/robonetv2/toykitchen_fixed_cam' --recursive --delete-destination false

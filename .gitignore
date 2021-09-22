@@ -130,14 +130,9 @@ dmypy.json
 
 
 *.idea
-
 *.sif
 *.img
-
 *.DS_Store
 .vscode/
-
-semiparametrictransfer/config.py
-experiments/
 wandb
 
