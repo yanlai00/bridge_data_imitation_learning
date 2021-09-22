@@ -111,15 +111,8 @@ def visualize_barplot_array(input_arr, img_size=(64, 64)):
         img = plot_bar(input_arr[b])
         img = cv2.resize(img, (img_size[1], img_size[0]), interpolation=cv2.INTER_CUBIC)
         imgs.append((img*255.).astype(np.uint8))
-        # cv2.imwrite('/nfs/kun1/users/febert/data/vmpc_exp/test_cv2.png', imgs[-1])
     return imgs
 
 if __name__ == '__main__':
     sigmodis = np.random.random_integers(0, 1, [10, 10])
     visualize_barplot_array(sigmodis)
-
-    # plt.switch_backend('agg')
-    # img = plot_graph(np.arange(10))
-    # print(np.max(img))
-    # print(np.min(img))
-    # import pdb; pdb.set_trace()

@@ -4,7 +4,7 @@ import cv2
 from PIL import Image
 from torchvision.transforms import Resize
 import torch
-from functools import partial, reduce
+from functools import reduce
 import copy
 
 def str2int(str):
@@ -43,9 +43,6 @@ class HasParameters:
         except AttributeError:
             self.params = self.get_default_params()
             self.params.update(inputs)
-
-    # TODO allow to access parameters by self.<param>
-
 
 def move_to_device(inputs, device):
     def func(x):

@@ -1,6 +1,0 @@
-transfer only directoires that contain the string hdf5
-
-`$cd /mount/harddrive/trainingdata/spt_trainingdata/control/widowx/vr_record_applied_actions
-`$ rsync -avm  --include='*/'  --include='**/hdf5/**'  --exclude="*meta_data.pkl"  --exclude="*" fermat:/home/datacol/Documents/data/spt_trainingdata/control/widowx/vr_record_applied_actions/ . `
-
--m prune empty direcotries
