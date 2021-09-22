@@ -7,16 +7,14 @@ import inspect
 import copy
 import glob
 import json
-from semiparametrictransfer.models.gcbc_images import GCBCImages
 import argparse
 import os
 import time
 import datetime
 import numpy as np
-from torch import autograd, true_divide
+from torch import autograd
 from torch.optim import Adam
 from functools import partial
-from semiparametrictransfer.data_sets.data_loader import FixLenVideoDataset
 from semiparametrictransfer.utils.general_utils import move_to_device
 from semiparametrictransfer.utils.general_utils import map_recursive
 from semiparametrictransfer.utils.general_utils import AverageMeter, RecursiveAverageMeter
@@ -28,7 +26,6 @@ from semiparametrictransfer.models import get_model_class
 from semiparametrictransfer.data_sets import get_dataset_class
 
 from semiparametrictransfer.models.utils.compute_dataset_normalization import compute_dataset_normalization
-from semiparametrictransfer.models.gcbc_images_context import GCBCImagesContext
 from semiparametrictransfer.utils.general_utils import sorted_nicely
 import shutil
 

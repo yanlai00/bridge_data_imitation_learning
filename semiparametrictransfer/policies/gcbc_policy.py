@@ -1,17 +1,10 @@
 import numpy as np
 import torch
-import time
-import copy
-import pickle as pkl
 import os
-# from visual_mpc.policy.policy import Policy
 from widowx_envs.policies.policy import Policy
 import cv2
 import glob
-from semiparametrictransfer.models.gcbc import GCBCModelTest
-from semiparametrictransfer.models.gcbc_images import GCBCImagesModelTest
 from semiparametrictransfer.utils.general_utils import AttrDict
-from semiparametrictransfer.models.trajfollwmodel import TrajFollowModelTest
 from semiparametrictransfer.utils.general_utils import np_unstack
 import json
 
@@ -106,27 +99,6 @@ class BCPolicyStates(Policy):
 
     def npy2trch(self, arr):
         return torch.from_numpy(arr).float().to(self.device)
-
-
-class BCPolicyFollowTraj(BCPolicyStates):
-    def _default_hparams(self):
-        params = super()._default_hparams()
-        params.model = TrajFollowModelTest
-        return params
-
-    def act(self, t=None, i_tr=None, state=None, loaded_traj_info=None):
-        self.t = t
-        self.i_tr = i_tr
-        reference_statetraj = loaded_traj_info['state'][None]
-        inputs = AttrDict(state=self.npy2trch(state[-1][None]),
-                          reference_statetraj=self.npy2trch(reference_statetraj))
-        out = self.predictor(inputs)
-
-        output = AttrDict()
-        output.actions = out['a_pred'].data.cpu().numpy()[0]
-        return output
-
-
 
 class GCBCPolicyImages(BCPolicyStates):
     def __init__(self, ag_params, policyparams):
