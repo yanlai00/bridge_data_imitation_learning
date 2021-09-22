@@ -241,7 +241,7 @@ class ModelTrainer(Configurable):
         if args.resume or self._hp.resume_checkpoint is not None:
             if self._hp.resume_checkpoint is not None:
                 args.resume = self._hp.resume_checkpoint
-            start_epoch, self.global_step = self.resume(args.resume, self._hp.resume_moco)
+            start_epoch, self.global_step = self.resume(args.resume)
             if stage.startswith('finetuning') and 'finetuning' not in args.resume:
                 start_epoch = 0
                 self.global_step = 0
@@ -301,7 +301,6 @@ class ModelTrainer(Configurable):
         # put new parameters in here:
         default_dict = {
             'resume_checkpoint': None,
-            'resume_moco': False, # resume Moco model
             'logger': Logger,
             'batch_size': 32,
             'mpar': None,   # model parameters
@@ -354,13 +353,13 @@ class ModelTrainer(Configurable):
 
         return conf, model_conf, data_conf
 
-    def resume(self, ckpt, resume_moco):
+    def resume(self, ckpt):
         weights_file = CheckpointHandler.get_resume_ckpt_file(ckpt, os.path.join(self._hp.exp_path, 'weights'))
         global_step, start_epoch, _ = \
             CheckpointHandler.load_weights(weights_file, self.model,
                                            load_step_and_opt=True, optimizer=self.optimizer,
                                            dataset_length=len(self.train_loader) * self._hp.batch_size,
-                                           strict=self.args.strict_weight_loading, load_from_moco=resume_moco)
+                                           strict=self.args.strict_weight_loading)
         self.model.to(self.model.device)
         return start_epoch, global_step
 

@@ -6,20 +6,6 @@ import sys
 import pipes
 from semiparametrictransfer.utils.general_utils import AttrDict, str2int
 
-def load_weights_from_moco(checkpoint, model):
-    new_dict = {}
-    for key, value in checkpoint['state_dict'].items():
-        if 'module.encoder_q' in key:
-            new_key = str.split(key, '.')[2:]
-            new_key = '.'.join(new_key)
-            new_key = 'encoder.encoder.' + new_key
-            new_dict[new_key] = value
-
-    incompatible_keys = model.load_state_dict(new_dict, strict=False)
-    print('Warning, missing keys in {}'.format(incompatible_keys.missing_keys))
-    print('Warning, unexpected keys in {}'.format(incompatible_keys.unexpected_keys))
-    import pdb; pdb.set_trace()
-
 class CheckpointHandler:
     @staticmethod
     def get_ckpt_name(epoch):
@@ -51,18 +37,12 @@ class CheckpointHandler:
         return os.path.join(path, resume_file)
 
     @staticmethod
-    def load_weights(weights_file, model, load_step_and_opt=False, optimizer=None, dataset_length=None, strict=True, load_from_moco=True):
+    def load_weights(weights_file, model, load_step_and_opt=False, optimizer=None, dataset_length=None, strict=True):
         success = False
         if os.path.isfile(weights_file):
             print(("=> loading checkpoint '{}'".format(weights_file)))
             checkpoint = torch.load(weights_file, map_location=model.device)
-
-            if load_from_moco:
-                load_weights_from_moco(checkpoint, model)
-                global_step, start_epoch, success = 0, 0, True
-                return global_step, start_epoch, success
-            else:
-                model.load_state_dict(checkpoint['state_dict'], strict=strict)
+            model.load_state_dict(checkpoint['state_dict'], strict=strict)
             if load_step_and_opt:
                 start_epoch = checkpoint['epoch'] + 1
                 global_step = checkpoint['global_step']

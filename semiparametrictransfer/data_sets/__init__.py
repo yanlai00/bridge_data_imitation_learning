@@ -8,6 +8,3 @@ def get_dataset_class(name):
     if name == 'MultiDatasetLoader':
         from semiparametrictransfer.data_sets.multi_dataset_loader import MultiDatasetLoader
         return MultiDatasetLoader
-    # if name == 'FilteredRoboNetDataset':
-        # from semiparametrictransfer.data_sets.robonet_dataloader import FilteredRoboNetDataset
-    #     return FilteredRoboNetDataset
