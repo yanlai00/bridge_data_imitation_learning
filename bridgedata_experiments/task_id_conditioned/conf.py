@@ -3,7 +3,7 @@ from bridgedata.models.gcbc_images import GCBCImages
 import numpy as np
 from bridgedata.utils.general_utils import AttrDict
 current_dir = os.path.dirname(os.path.realpath(__file__))
-from bridgedata_experiments.dataset_lmdb import TOTAL_NUM_TASKS_ALIASING, bridge_data_config_aliasing, task_name_aliasing_dict
+from bridgedata_experiments.dataset_lmdb import TOTAL_NUM_TASKS_ALIASING, task_name_aliasing_dict, bridge_data_config
 from widowx_envs.utils.datautils.lmdb_dataloader import LMDB_Dataset_Pandas
 
 configuration = AttrDict(
@@ -33,7 +33,7 @@ validation_conf_toykitchen1_aliasing = AttrDict(
 data_config = AttrDict(
     main=AttrDict(
         dataclass=LMDB_Dataset_Pandas,
-        dataconf=bridge_data_config_aliasing,
+        dataconf=bridge_data_config,
         **validation_conf_toykitchen1_aliasing
     )
 )

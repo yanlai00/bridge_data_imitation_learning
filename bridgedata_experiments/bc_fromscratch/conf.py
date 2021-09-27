@@ -3,7 +3,6 @@ from bridgedata.models.gcbc_images import GCBCImages
 import numpy as np
 from bridgedata.utils.general_utils import AttrDict
 current_dir = os.path.dirname(os.path.realpath(__file__))
-from bridgedata_experiments.dataset_lmdb import long_distance_trajs
 from widowx_envs.utils.datautils.lmdb_dataloader import LMDB_Dataset_Pandas
 
 configuration = AttrDict(
