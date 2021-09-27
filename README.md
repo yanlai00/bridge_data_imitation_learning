@@ -24,7 +24,7 @@ then in this directory run
 
 Clone the  [bridge data robot infrastructure repository](https://github.com/yanlai00/bridge_data_robot_infra), install the dependencies, and run
 
-`python setup.py develop`
+`python widowx_envs/setup.py develop`
 
 ## Examples to run
 
