@@ -27,16 +27,16 @@ Clone the bridge data robot infrastructure repository and run
 
 ### Training
 To train imitation learning on a single task only, run:
-`python imitation_learning/train.py --path  imitation_learning_experiments/bc_fromscratch/conf.py`
-The example config file trains the "wipe plate with sponge task". You can change the training task and the training parameters in `imitation_learning_experiments/bc_fromscratch/conf.py`.
+`python bridgedata/train.py --path  bridgedata_experiments/bc_fromscratch/conf.py`
+The example config file trains the "wipe plate with sponge task". You can change the training task and the training parameters in `bridgedata_experiments/bc_fromscratch/conf.py`.
 
 To jointly train on multiple tasks in the bridge dataset with task-id conditioning, run:
-`python imitation_learning/train.py --path  imitation_learning_experiments/task_id_conditioning/conf.py`
-The example config file trains a multi-task, task-id conditioned imitation learning policy on all of the tasks in toykitchen1. Another example config file `imitation_learning_experiments/task_id_conditioning/conf_exclude_toykitchen1.py` trains a multi-task policy on all of the environments except toykitchen1 (to evaluation transferability of policies).
+`python bridgedata/train.py --path  bridgedata_experiments/task_id_conditioning/conf.py`
+The example config file trains a multi-task, task-id conditioned imitation learning policy on all of the tasks in toykitchen1. Another example config file `bridgedata_experiments/task_id_conditioning/conf_exclude_toykitchen1.py` trains a multi-task policy on all of the environments except toykitchen1 (to evaluation transferability of policies).
 
 To jointly train on multiple tasks in the bridge dataset with dataset re-balancing, run:
-`python imitation_learning/train.py --path  imitation_learning_experiments/random_mixing_task_id/conf.py`
-The example config file trains a multi-task, task-id conditioned imitation learning policy on all of the environments except real kitchen 1, and the wipe plate with sponge task. The dataset is re-balanced such that the wipe plate with sponge task takes up 10% of the training dataset.  Another example config file `imitation_learning_experiments/random_mixing_task_id/conf_toykitchen1.py` rebalances the dataset such that trajectories in toy kitchen 1 takes up 30% of the training dataset.
+`python bridgedata/train.py --path  bridgedata_experiments/random_mixing_task_id/conf.py`
+The example config file trains a multi-task, task-id conditioned imitation learning policy on all of the environments except real kitchen 1, and the wipe plate with sponge task. The dataset is re-balanced such that the wipe plate with sponge task takes up 10% of the training dataset.  Another example config file `bridgedata_experiments/random_mixing_task_id/conf_toykitchen1.py` rebalances the dataset such that trajectories in toy kitchen 1 takes up 30% of the training dataset.
 
 ## Doodad
 

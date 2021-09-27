@@ -1,5 +1,5 @@
 from doodad.wrappers.easy_launch import sweep_function, save_doodad_config
-from imitation_learning.train import ModelTrainer
+from bridgedata.train import ModelTrainer
 import argparse
 import os
 

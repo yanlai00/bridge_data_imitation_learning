@@ -2,8 +2,8 @@ from setuptools import setup
 
 
 setup(
-    name='imitation_learning',
+    name='bridgedata',
     version='0.2dev',
-    packages=['imitation_learning'],
+    packages=['bridgedata'],
     license='MIT License',
 )
