@@ -140,7 +140,7 @@ class ModelTrainer(Configurable):
         self._hp = self._default_hparams()
         self._override_defaults(self.conf)  # override defaults with config file
 
-        self._hp.exp_path = make_path(os.environ['EXP'] + '/spt_experiments', args.path, args.prefix, args.new_dir)
+        self._hp.exp_path = make_path(os.environ['EXP'] + '/bridgedata_experiments', args.path, args.prefix, args.new_dir)
         if not args.resume:
             clear_folder(self._hp.exp_path)
         self.log_dir = log_dir = os.path.join(self._hp.exp_path, 'events')

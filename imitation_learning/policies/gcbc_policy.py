@@ -189,11 +189,3 @@ class GCBCPolicyImages(BCPolicyStates):
         print('inferred action', action)
         output.actions = action
         return output
-
-
-if __name__ == '__main__':
-    policy = {
-        'type': GCBCPolicyImages,
-        'restore_path': os.environ['EXP'] + '/spt_experiments' + '/modeltraining/bc/widowx_pushing/can_freeze_pretrain/weights/weights_ep9995.pth',
-    }
-    p = GCBCPolicyImages({}, policy, None, None)

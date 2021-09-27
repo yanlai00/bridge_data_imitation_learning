@@ -9,8 +9,6 @@ from imitation_learning.models.utils.gradient_reversal_layer import ReverseLayer
 import copy
 
 class GCBCTransfer(BaseModel):
-    """Semi parametric transfer model"""
-
     def __init__(self, overrideparams, logger=None):
         super().__init__(overrideparams, logger)
         self._hp = self._default_hparams()

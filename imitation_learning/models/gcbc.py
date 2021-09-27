@@ -9,7 +9,6 @@ from imitation_learning.models.base_model import BaseModel
 from imitation_learning.models.utils.layers import BaseProcessingNet
 
 class GCBCModel(BaseModel):
-    """Semi parametric transfer model"""
     def __init__(self, overrideparams, logger=None):
         super().__init__(overrideparams, logger)
         self._hp = self._default_hparams()

@@ -169,8 +169,6 @@ def compute_gmm_loss(means, covariances, mixing_coefficients, action_targets):
     return loss
 
 class GCBCImages(BaseModel):
-    """Semi parametric transfer model"""
-
     def __init__(self, overrideparams, logger=None):
         super(GCBCImages, self).__init__(overrideparams, logger)
         self._hp = self._default_hparams()
@@ -651,22 +649,3 @@ class GCBCImagesModelTest(GCBCImages):
             inputs.task_id = npy2trch(np.array([self._hp.test_time_task_id]))
         outputs = super(GCBCImagesModelTest, self).forward(inputs)
         return outputs
-
-
-if __name__ == '__main__':
-    params = {
-        'restore_path': os.environ['EXP'] + '/spt_experiments' + '/modeltraining/inv_embed/widowX/freeze/weights/weights_ep4995.pth',
-        'get_bridge_data_params': True,
-        'batch_size': 1,
-        'action_dim' : 4,
-        'state_dim' : 4,
-        'goal_cond': True,
-        'data_conf': AttrDict(
-                         T=30,
-                         color_augmentation=0.3,
-                         random_crop=[48, 64],
-                         image_size_beforecrop=[56, 72],
-                         data_dir=os.environ['DATA'] + '/spt_trainingdata' + '/realworld/can_pushing_line',
-                     )
-    }
-    testmodel = GCBCImagesModelTest(params)

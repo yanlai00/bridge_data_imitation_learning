@@ -192,36 +192,3 @@ class MultiDatasetReplayBuffer():
         for dataset in self.data_sets.values():
             dataset.set_batch_size(batch_size)
         return self
-
-
-
-# for testing
-if __name__ == '__main__':
-    put_fork_knive_spoon_in_tray = AttrDict(
-        dataset_type = FilteredRoboNetDataset,
-        T=20,
-        image_size_beforecrop=[112, 144],
-        random_crop=[96, 128],
-        color_augmentation=0.3,
-        splits=None,
-        sel_camera='random',
-        target_adim=7,
-        target_sdim=7,
-        robot_list=['widowx'],
-        data_dir=[
-            os.environ['DATA'] + '/spt_trainingdata/control/widowx/stools/py2/robonet_lowres/hdf5'
-        ]
-    )
-
-    replay_buffer = DatasetReplayBuffer(put_fork_knive_spoon_in_tray)
-    dataloader = replay_buffer.get_data_loader(10)
-
-    for batch in dataloader:
-        print(batch.keys())
-        for key, value in batch.items():
-            print(key)
-            print(value.shape)
-
-
-    print('done')
-

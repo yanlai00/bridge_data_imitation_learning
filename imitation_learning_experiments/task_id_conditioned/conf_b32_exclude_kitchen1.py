@@ -3,9 +3,8 @@ from imitation_learning.models.gcbc_images import GCBCImages
 import numpy as np
 from imitation_learning.utils.general_utils import AttrDict
 current_dir = os.path.dirname(os.path.realpath(__file__))
-from imitation_learning_experiments.modeltraining.widowx.real.toy_kitchen_v0.dataset_lmdb import bridge_data_config_aliasing, TOTAL_NUM_TASKS_ALIASING, task_name_aliasing_dict
+from imitation_learning_experiments.dataset_lmdb import TOTAL_NUM_TASKS_ALIASING, bridge_data_config, task_name_aliasing_dict
 from widowx_envs.utils.datautils.lmdb_dataloader import LMDB_Dataset_Pandas
-from imitation_learning.data_sets.multi_dataset_loader import RandomMixingDatasetLoader
 
 configuration = AttrDict(
     main=AttrDict(
@@ -19,8 +18,8 @@ bridge_data_config_kitchen1_aliasing = AttrDict(
             random_crop=[96, 128],
             color_augmentation=0.1,
             image_size_beforecrop=[112, 144],
-            data_dir=os.environ['DATA'] + '/robonetv2/toykitchen_fixed_cam/',
-            filtering_function=[lambda dframe: dframe[(dframe['environment'] == 'toykitchen1')]],
+            data_dir=os.environ['DATA'] + '/robonetv2/toykitchen_delay1/',
+            filtering_function=[lambda dframe: dframe[(dframe['environment'] == 'toykitchen1') | (dframe['environment'] == 'toykitchen_bww')]],
             aliasing_dict=task_name_aliasing_dict,
         )
 
@@ -31,25 +30,11 @@ validation_conf_toykitchen1_aliasing = AttrDict(
     ),
 )
 
-source_data = bridge_data_config_kitchen1_aliasing
-validation_data = validation_conf_toykitchen1_aliasing
-
 data_config = AttrDict(
     main=AttrDict(
-        dataclass=RandomMixingDatasetLoader,
-        dataconf=AttrDict(
-            dataset0=[
-                LMDB_Dataset_Pandas,
-                source_data,
-                0.3
-            ],
-            dataset1=[
-                LMDB_Dataset_Pandas,
-                bridge_data_config_aliasing,
-                0.7
-            ],
-        ),
-        **validation_data
+        dataclass=LMDB_Dataset_Pandas,
+        dataconf=bridge_data_config,
+        **validation_conf_toykitchen1_aliasing
     )
 )
 

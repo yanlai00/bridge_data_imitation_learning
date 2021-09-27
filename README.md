@@ -41,10 +41,10 @@ Collect data for lifting objects over a bowl with a random viewpoint, selecting 
 
 ## Training
 To train on the source task only run:
-`python imitation_learning/train.py --path  experiments/modeltraining/widowx/sim/put_in_bowl/bc_fromscratch/conf.py`
+`python imitation_learning/train.py --path  imitation_learning_experiments/bc_fromscratch/conf.py`
 
 To jointly train on bridge and source data run:
-`python imitation_learning/train.py --path  experiments/modeltraining/widowx/sim/put_in_bowl/transfer/conf.py`
+`python imitation_learning/train.py --path  imitation_learning_experiments/task_id_conditioning/conf.py`
 
 To add the domain adverserial loss run:
-`python imitation_learning/train.py --path  experiments/modeltraining/widowx/sim/put_in_bowl/transfer/camera_class/conf.py`
+`python imitation_learning/train.py --path  imitation_learning_experiments/random_mixing_task_id/conf.py`

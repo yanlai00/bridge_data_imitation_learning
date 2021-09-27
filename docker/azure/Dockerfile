@@ -59,17 +59,17 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
 
 RUN conda update -y --name base conda && conda clean --all -y
 
-RUN conda create --name spt python=3.6.8 pip
-RUN echo "source activate spt" >> ~/.bashrc
+RUN conda create --name bridgedata python=3.6.8 pip
+RUN echo "source activate bridgedata" >> ~/.bashrc
 # Use the railrl pip
 ENV OLDPATH $PATH
-ENV PATH /opt/conda/envs/spt/bin:$PATH
+ENV PATH /opt/conda/envs/bridgedata/bin:$PATH
 
 # Install packages here
 COPY ./docker_requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-ENV EXP /data/spt_data/experiments
-ENV DATA /data/spt_data/trainingdata
+ENV EXP /data/experiments
+ENV DATA /data/trainingdata
 
 

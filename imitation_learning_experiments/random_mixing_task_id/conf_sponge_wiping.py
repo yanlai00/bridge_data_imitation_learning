@@ -1,9 +1,8 @@
 import os
 from imitation_learning.models.gcbc_images import GCBCImages
-import numpy as np
 from imitation_learning.utils.general_utils import AttrDict
 current_dir = os.path.dirname(os.path.realpath(__file__))
-from experiments.modeltraining.widowx.real.toy_kitchen_v0.dataset_lmdb import task_name_aliasing_dict
+from imitation_learning_experiments.dataset_lmdb import task_name_aliasing_dict
 from widowx_envs.utils.datautils.lmdb_dataloader import LMDB_Dataset_Pandas
 from imitation_learning.data_sets.multi_dataset_loader import RandomMixingDatasetLoader
 
@@ -14,36 +13,36 @@ configuration = AttrDict(
     ),
 )
 
-long_distance_trajs = AttrDict(
-            name='long_distance_trajs',
+sponge_wipe = AttrDict(
+            name='sponge_wipe',
             random_crop=[96, 128],
             color_augmentation=0.1,
             image_size_beforecrop=[112, 144],
-            data_dir=os.environ['DATA'] + '/robonetv2/toykitchen_fixed_cam/',
-            excluded_dirs=['initial_testconfig', 'cropped', 'initial_test_config', 'put_eggplant_in_pot_or_pan', 'tool_chest', 'from_basket_to_tray'],
-            filtering_function=[lambda dframe: dframe[(dframe['month'] > 7 ) | ((dframe['month'] == 7) & (dframe['day'] >= 5))]],
+            data_dir=os.environ['DATA'] + '/robonetv2/toykitchen_fixed_cam/realkitchen1_counter/',
+            filtering_function=[lambda dframe: dframe[(dframe['policy_desc'] == 'human_demo, pick up sponge and wipe plate')]],
             aliasing_dict=task_name_aliasing_dict,
         )
 
-validation_long_distance_trajs = AttrDict(
+validation_sponge_wipe = AttrDict(
     val0=AttrDict(
         dataclass=LMDB_Dataset_Pandas,
-        dataconf=long_distance_trajs
+        dataconf=sponge_wipe
     ),
 )
 
-bridge_data_config = AttrDict(
-    name='alldata',
+excl_real_kitchen_and_toolchest= AttrDict(
+    name='excl_real_kitchen_and_toolchest',
     random_crop=[96, 128],
     color_augmentation=0.1,
     image_size_beforecrop=[112, 144],
     data_dir=os.environ['DATA'] + '/robonetv2/toykitchen_fixed_cam',
-    excluded_dirs=['initial_testconfig', 'cropped', 'initial_test_config', 'put_eggplant_in_pot_or_pan', 'tool_chest', 'from_basket_to_tray'],
+    excluded_dirs=['initial_testconfig', 'cropped', 'initial_test_config', 'put_eggplant_in_pot_or_pan', 'realkitchen1_counter', 'realkitchen1_dishwasher', 'tool_chest'],
     aliasing_dict=task_name_aliasing_dict,
 )
 
-source_data = long_distance_trajs
-validation_data = validation_long_distance_trajs
+source_data = sponge_wipe
+validation_data = validation_sponge_wipe
+bridge_data = excl_real_kitchen_and_toolchest
 
 data_config = AttrDict(
     main=AttrDict(
@@ -52,12 +51,12 @@ data_config = AttrDict(
             dataset0=[
                 LMDB_Dataset_Pandas,
                 source_data,
-                0.3
+                0.1
             ],
             dataset1=[
                 LMDB_Dataset_Pandas,
-                bridge_data_config,
-                0.7
+                bridge_data,
+                0.9
             ],
         ),
         **validation_data
@@ -69,7 +68,7 @@ model_config = AttrDict(
         action_dim=7,
         state_dim=7,
         resnet='resnet34',
-        task_id_conditioning=66,
+        task_id_conditioning=72,
         img_sz=[96, 128]
     )
 )

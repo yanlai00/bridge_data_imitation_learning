@@ -1,10 +1,10 @@
 import sys
 # sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
 
-from visual_mpc.run_data_collection import DataCollectionManager
+from widowx_envs.run_data_collection import DataCollectionManager
 import os
 
-class SPTDataCollectionManager(DataCollectionManager):
+class BridgeDataCollectionManager(DataCollectionManager):
     def set_paths(self, hyperparams):
         """
         set two directories:
@@ -14,17 +14,13 @@ class SPTDataCollectionManager(DataCollectionManager):
         """
         assert 'experiments' in self.args.experiment
         subpath = hyperparams['current_dir'].partition('experiments')[2]
-        hyperparams['data_save_dir'] = os.path.join(os.environ['DATA'] + '/spt_trainingdata',  subpath.strip("/"), self.save_dir_prefix.strip("/"))
+        hyperparams['data_save_dir'] = os.path.join(os.environ['DATA'] + '/bridgedata_trainingdata',  subpath.strip("/"), self.save_dir_prefix.strip("/"))
         if self.time_prefix != "":
             hyperparams['data_save_dir'] = hyperparams['data_save_dir'] + '/' + self.time_prefix
-        hyperparams['log_dir'] = os.path.join(os.environ['EXP'] + '/spt_experiments', subpath.strip("/"),  self.save_dir_prefix.strip("/"))
+        hyperparams['log_dir'] = os.path.join(os.environ['EXP'] + '/bridgedata_experiments', subpath.strip("/"),  self.save_dir_prefix.strip("/"))
         print('setting data_save_dir to', hyperparams['data_save_dir'])
         print('setting log_dir to', hyperparams['log_dir'])
         self.hyperparams = hyperparams
-
-if __name__ == '__main__':
-    c = SPTDataCollectionManager()
-    c.run()
 
 
 

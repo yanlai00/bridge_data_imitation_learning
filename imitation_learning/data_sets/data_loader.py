@@ -287,27 +287,5 @@ class FixLenVideoDataset(BaseVideoDataset):
     def get_dataset_spec(data_dir):
         return imp.load_source('dataset_spec', os.path.join(data_dir, 'dataset_spec.py')).dataset_spec
 
-if __name__ == '__main__':
-    # data_dir = os.environ['VMPC_DATA'] + '/classifier_control/data_collection/sim/1_obj_cartgripper_xz_rejsamp'
-    # data_dir = os.environ['DATA'] + '/spt_trainingdata' + '/spt_control_experiments/control/widowx/random_datacollection'
-    # data_dir = os.environ['DATA'] + '/sawyerdata/annies_data/kinesthetic_demos'
-    # data_dir = os.environ['DATA'] + '/spt_trainingdata/control/widowx/sim/randview_2out5obj/'
-    data_dir = os.environ['DATA'] + '/spt_trainingdata/control/widowx/sim/randview_2out5obj_random_actions/5k_10view/2021-03-09_15-14-03'
-
-    put_1to3spoon_in_tray_highres = AttrDict(
-        # random_crop=[96, 128],
-        # color_augmentation=0.3,
-        # image_size_beforecrop=[112, 144],
-        sel_camera=-1,
-        data_dir=data_dir
-    )
-
-    # hp = AttrDict(data_dir=data_dir,
-    #               T=20)
-    hp = put_1to3spoon_in_tray_highres
-
-    loader = FixLenVideoDataset(hp).get_data_loader(8)
-    make_gifs(loader)
-    # measure_time(loader)
 
 
