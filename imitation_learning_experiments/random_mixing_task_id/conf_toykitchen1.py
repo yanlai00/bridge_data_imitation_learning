@@ -19,7 +19,7 @@ bridge_data_config_kitchen1_aliasing = AttrDict(
             color_augmentation=0.1,
             image_size_beforecrop=[112, 144],
             data_dir=os.environ['DATA'] + '/robonetv2/toykitchen_delay1/',
-            excluded_dirs=['initial_testconfig', 'cropped', 'initial_test_config', 'put_eggplant_in_pot_or_pan', 'tool_chest', 'from_basket_to_tray', 'dagger', 'realkitchen1'],
+            excluded_dirs=['initial_testconfig', 'cropped', 'initial_test_config', 'put_eggplant_in_pot_or_pan', 'tool_chest', 'from_basket_to_tray', 'realkitchen1'],
             filtering_function=[lambda dframe: dframe[(dframe['environment'] == 'toykitchen1') | (dframe['environment'] == 'toykitchen_bww')]],
             aliasing_dict=task_name_aliasing_dict,
         )
@@ -37,7 +37,7 @@ bridge_data_config = AttrDict(
     color_augmentation=0.1,
     image_size_beforecrop=[112, 144],
     data_dir=os.environ['DATA'] + '/robonetv2/toykitchen_delay1',
-    excluded_dirs=['initial_testconfig', 'cropped', 'initial_test_config', 'put_eggplant_in_pot_or_pan', 'tool_chest', 'from_basket_to_tray', 'dagger', 'realkitchen1'],
+    excluded_dirs=['initial_testconfig', 'cropped', 'initial_test_config', 'put_eggplant_in_pot_or_pan', 'tool_chest', 'from_basket_to_tray', 'realkitchen1'],
     aliasing_dict=task_name_aliasing_dict,
 )
 

@@ -1,4 +1,8 @@
-# Installation
+# Bridge Data Imitation Learning
+
+This is the accompanying code repository for the paper "Bridge Data: Boosting Generalization of Robotic Skills with Cross-Domain Datasets".
+
+## Installation
 
 In your `.bashrc` set the environment variables EXP for experiment data and DATA for trainingdata:
 
@@ -19,14 +23,21 @@ Clone the bridge data robot infrastructure repository and run
 
 `python setup.py develop`
 
-# Examples to run
+## Examples to run
 
-## Training
-To train on a single task only run:
+### Training
+To train imitation learning on a single task only, run:
 `python imitation_learning/train.py --path  imitation_learning_experiments/bc_fromscratch/conf.py`
+The example config file trains the "wipe plate with sponge task". You can change the training task and the training parameters in `imitation_learning_experiments/bc_fromscratch/conf.py`.
 
 To jointly train on multiple tasks in the bridge dataset with task-id conditioning, run:
 `python imitation_learning/train.py --path  imitation_learning_experiments/task_id_conditioning/conf.py`
+The example config file trains a multi-task, task-id conditioned imitation learning policy on all of the tasks in toykitchen1. Another example config file `imitation_learning_experiments/task_id_conditioning/conf_exclude_toykitchen1.py` trains a multi-task policy on all of the environments except toykitchen1 (to evaluation transferability of policies).
 
 To jointly train on multiple tasks in the bridge dataset with dataset re-balancing, run:
 `python imitation_learning/train.py --path  imitation_learning_experiments/random_mixing_task_id/conf.py`
+The example config file trains a multi-task, task-id conditioned imitation learning policy on all of the environments except real kitchen 1, and the wipe plate with sponge task. The dataset is re-balanced such that the wipe plate with sponge task takes up 10% of the training dataset.  Another example config file `imitation_learning_experiments/random_mixing_task_id/conf_toykitchen1.py` rebalances the dataset such that trajectories in toy kitchen 1 takes up 30% of the training dataset.
+
+## Doodad
+
+This repository also provides an example script  `docker/azure/doodad_launch.py` for launching jobs on cloud compute services like AWS, GCP or Azure with [Doodad](https://github.com/rail-berkeley/doodad).
