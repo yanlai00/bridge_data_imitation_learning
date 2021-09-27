@@ -76,23 +76,6 @@ def set_seeds(seed):
     torch.backends.cudnn.benchmark = False
     np.random.seed(seed)
 
-def run_control_eval(logger, control_conf, model_weights_path, global_step):
-    from visual_mpc.agent.trajectory_collector import TrajectoryCollector
-    control_conf = copy.deepcopy(control_conf)
-
-    repeats = 1 # rerun evaluation multiple times
-    for label, conf in control_conf.items():
-        success_rates = []
-        for r in range(repeats):
-            conf['logging_conf'] = AttrDict(logger=logger, label=label + '_r{}'.format(r), global_step=global_step)
-            conf['policy']['restore_path'] = model_weights_path
-            col = TrajectoryCollector(conf)
-            col.run()
-            success_rates.append(col.metrics[label + '_r{}'.format(r) + '_goal_reached_mean'])
-        logger.log_scalar(np.std(success_rates), label + '_success_rate_std', global_step)
-        logger.log_scalar(np.mean(success_rates), label + '_success_rate_mean', global_step)
-
-
 from bridgedata.utils.general_utils import Configurable
 
 class ModelTrainer(Configurable):
@@ -378,7 +361,7 @@ class ModelTrainer(Configurable):
         if (self.global_step - self.last_global_step_when_val) > self._hp.delta_step_val and not self.args.no_val:
             val_loss = self.val()
             self.last_global_step_when_val = self.global_step
-        if (self.global_step - self.last_global_step_when_save) > self._hp.delta_step_save or self.run_control_now():
+        if (self.global_step - self.last_global_step_when_save) > self._hp.delta_step_save:
             if val_loss < self.best_val_loss:
                 self.best_val_loss = val_loss
                 save_string = 'weights_best_itr{}.pth'.format(self.global_step)
@@ -393,12 +376,6 @@ class ModelTrainer(Configurable):
             if self._hp.delete_older_checkpoints:
                 delete_older_checkpoints(self.save_dir)
             self.last_global_step_when_save = self.global_step
-        if self.run_control_now():
-            run_control_eval(self._loggers.val, self._hp[self.stage].control_conf, self._save_file_name, self.global_step)
-            self.last_global_step_when_control = self.global_step
-
-    def run_control_now(self):
-        return 'control_conf' in self._hp[self.stage] and (self.global_step - self.last_global_step_when_control) > self._hp.delta_step_control_val and not self.args.no_val
 
     @property
     def log_outputs_now(self):
