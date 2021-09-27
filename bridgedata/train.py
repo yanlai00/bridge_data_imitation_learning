@@ -97,13 +97,14 @@ from bridgedata.utils.general_utils import Configurable
 
 class ModelTrainer(Configurable):
     def __init__(self, args):
-        import wandb
-        from bridgedata.config import WANDB_API_KEY, WANDB_EMAIL, WANDB_USERNAME
-        os.environ['WANDB_API_KEY'] = WANDB_API_KEY
-        os.environ['WANDB_USER_EMAIL'] = WANDB_EMAIL
-        os.environ['WANDB_USERNAME'] = WANDB_USERNAME
-        os.environ["WANDB_MODE"] = "run"
-        wandb.init(project='bridge_data', reinit=True, sync_tensorboard=True, name=args.prefix)
+        # Uncomment the following lines to sync tensorboard logs to weights and biases
+        # import wandb
+        # from bridgedata.config import WANDB_API_KEY, WANDB_EMAIL, WANDB_USERNAME
+        # os.environ['WANDB_API_KEY'] = WANDB_API_KEY
+        # os.environ['WANDB_USER_EMAIL'] = WANDB_EMAIL
+        # os.environ['WANDB_USERNAME'] = WANDB_USERNAME
+        # os.environ["WANDB_MODE"] = "run"
+        # wandb.init(project='bridge_data', reinit=True, sync_tensorboard=True, name=args.prefix)
         self.batch_idx = 0
         self.args = args
 
