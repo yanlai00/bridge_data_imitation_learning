@@ -61,7 +61,6 @@ RUN conda update -y --name base conda && conda clean --all -y
 
 RUN conda create --name bridgedata python=3.6.8 pip
 RUN echo "source activate bridgedata" >> ~/.bashrc
-# Use the railrl pip
 ENV OLDPATH $PATH
 ENV PATH /opt/conda/envs/bridgedata/bin:$PATH
 
