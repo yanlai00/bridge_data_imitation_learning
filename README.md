@@ -20,11 +20,11 @@ pip install -r requirements.txt
 
 then in this directory run
 
-`python setup.py develop`
+`pip install -e .`
 
 Clone the  [bridge data robot infrastructure repository](https://github.com/yanlai00/bridge_data_robot_infra), install the dependencies, and run
 
-`python widowx_envs/setup.py develop`
+`pip install -e widowx_envs`
 
 ## Examples to run
 
