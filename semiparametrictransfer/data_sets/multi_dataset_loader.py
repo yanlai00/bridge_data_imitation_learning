@@ -2,7 +2,6 @@ import torch.utils.data as data
 from semiparametrictransfer.utils.general_utils import AttrDict
 import time
 import hashlib
-import random
 import numpy as np
 from torch.utils.data import DataLoader
 import os
@@ -81,7 +80,7 @@ class RandomMixingDatasetLoader():
         else:
             self.n_worker = 1
 
-        # self.n_worker = 0 ########################
+        # self.n_worker = 0
         self._hp.name = 'random_mixing'
 
     def __getitem__(self, index):
@@ -154,43 +153,3 @@ def add_hashes(hashes, images):
         image_string = images[b].numpy().tostring()
         hashes.add(hashlib.sha256(image_string).hexdigest())
 
-if __name__ == '__main__':
-    # from semiparametrictransfer.data_sets.robonet_dataloader import FilteredRoboNetDataset
-    from semiparametrictransfer.data_sets.data_loader import FixLenVideoDataset
-    from widowx_envs.utils.datautils.lmdb_dataloader import LMDB_Dataset
-
-    source = AttrDict(
-        image_size_beforecrop=[48, 64],
-        # random_crop=[48, 64],
-        data_dir=[
-            os.environ['DATA'] + '/robonetv2/vr_record_applied_actions_robonetv2/bww/pick_blue_elephant_no_distractors/lmdb'
-        ],
-        sel_camera=0
-    )
-
-    bridge = AttrDict(
-        image_size_beforecrop=[48, 64],
-        # random_crop=[48, 64],
-        data_dir=[
-            os.environ['DATA'] + '/robonetv2/vr_record_applied_actions_robonetv2/bww/2k/lmdb',
-            os.environ['DATA'] + '/robonetv2/vr_record_applied_actions_robonetv2/bww/pick_pink_doll/lmdb',
-        ],
-    )
-
-    hp = AttrDict(
-            single_task=AttrDict(
-                dataclass=LMDB_Dataset,
-                dataconf=source,
-            ),
-            bridge_data=AttrDict(
-                dataclass=LMDB_Dataset,
-                dataconf=bridge,
-            ),
-            # n_worker=0
-        )
-
-    dataset = MultiDatasetLoader(hp, 'train', shuffle=True)
-    loader = dataset.get_data_loader(8)
-    count_hashes(loader)
-    # from semiparametrictransfer.data_sets.data_utils.test_datasets import measure_time
-    # measure_time(loader)

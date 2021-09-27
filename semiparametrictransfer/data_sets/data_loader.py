@@ -4,7 +4,7 @@ import glob
 import h5py
 import random
 import imp
-from semiparametrictransfer.data_sets.data_utils.test_datasets import measure_time, make_gifs
+from semiparametrictransfer.data_sets.data_utils.test_datasets import make_gifs
 from torch.utils.data import DataLoader
 import os
 from semiparametrictransfer.utils.general_utils import Configurable

@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-import time
 from semiparametrictransfer.utils.general_utils import np_unstack
 import torch
 
