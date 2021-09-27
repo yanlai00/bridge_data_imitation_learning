@@ -1,5 +1,5 @@
 from doodad.wrappers.easy_launch import sweep_function, save_doodad_config
-from semiparametrictransfer.train import ModelTrainer
+from imitation_learning.train import ModelTrainer
 import argparse
 import os
 

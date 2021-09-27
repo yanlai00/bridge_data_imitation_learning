@@ -15,18 +15,18 @@ import numpy as np
 from torch import autograd
 from torch.optim import Adam
 from functools import partial
-from semiparametrictransfer.utils.general_utils import move_to_device
-from semiparametrictransfer.utils.general_utils import map_recursive
-from semiparametrictransfer.utils.general_utils import AverageMeter, RecursiveAverageMeter
-from semiparametrictransfer.utils.general_utils import AttrDict
-from semiparametrictransfer.utils.checkpointer import CheckpointHandler
-from semiparametrictransfer.utils.tensorboard_logger import Logger
-from semiparametrictransfer.models.gcbc_transfer import GCBCTransfer
-from semiparametrictransfer.models import get_model_class
-from semiparametrictransfer.data_sets import get_dataset_class
+from imitation_learning.utils.general_utils import move_to_device
+from imitation_learning.utils.general_utils import map_recursive
+from imitation_learning.utils.general_utils import AverageMeter, RecursiveAverageMeter
+from imitation_learning.utils.general_utils import AttrDict
+from imitation_learning.utils.checkpointer import CheckpointHandler
+from imitation_learning.utils.tensorboard_logger import Logger
+from imitation_learning.models.gcbc_transfer import GCBCTransfer
+from imitation_learning.models import get_model_class
+from imitation_learning.data_sets import get_dataset_class
 
-from semiparametrictransfer.models.utils.compute_dataset_normalization import compute_dataset_normalization
-from semiparametrictransfer.utils.general_utils import sorted_nicely
+from imitation_learning.models.utils.compute_dataset_normalization import compute_dataset_normalization
+from imitation_learning.utils.general_utils import sorted_nicely
 import shutil
 
 def save_checkpoint(state, folder, filename='checkpoint.pth'):
@@ -63,7 +63,7 @@ def make_path(exp_dir, conf_path, prefix, make_new_dir):
     if conf_path.endswith('.json'):
         return '/'.join(str.split(conf_path, '/')[:-1])
     else:
-        path = conf_path.split('semiparametrictransfer_experiments/', 1)[1]
+        path = conf_path.split('imitation_learning_experiments/', 1)[1]
         if make_new_dir:
             prefix += datetime_str()
         base_path = os.path.join(exp_dir,  '/'.join(str.split(path, '/')[:-1]))
@@ -93,12 +93,12 @@ def run_control_eval(logger, control_conf, model_weights_path, global_step):
         logger.log_scalar(np.mean(success_rates), label + '_success_rate_mean', global_step)
 
 
-from semiparametrictransfer.utils.general_utils import Configurable
+from imitation_learning.utils.general_utils import Configurable
 
 class ModelTrainer(Configurable):
     def __init__(self, args):
         import wandb
-        from semiparametrictransfer.config import WANDB_API_KEY, WANDB_EMAIL, WANDB_USERNAME
+        from imitation_learning.config import WANDB_API_KEY, WANDB_EMAIL, WANDB_USERNAME
         os.environ['WANDB_API_KEY'] = WANDB_API_KEY
         os.environ['WANDB_USER_EMAIL'] = WANDB_EMAIL
         os.environ['WANDB_USERNAME'] = WANDB_USERNAME

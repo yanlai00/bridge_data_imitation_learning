@@ -1,7 +1,7 @@
 import os
-from semiparametrictransfer.models.gcbc_images import GCBCImages
+from imitation_learning.models.gcbc_images import GCBCImages
 import numpy as np
-from semiparametrictransfer.utils.general_utils import AttrDict
+from imitation_learning.utils.general_utils import AttrDict
 current_dir = os.path.dirname(os.path.realpath(__file__))
 from experiments.modeltraining.widowx.real.toy_kitchen_v0.dataset_lmdb import TOTAL_NUM_TASKS_ALIASING, long_distance_trajs, validation_conf_toykitchen2_room8052_aliasing
 from widowx_envs.utils.datautils.lmdb_dataloader import LMDB_Dataset, LMDB_Dataset_Pandas

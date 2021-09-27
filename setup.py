@@ -2,8 +2,8 @@ from setuptools import setup
 
 
 setup(
-    name='semiparametrictransfer',
+    name='imitation_learning',
     version='0.2dev',
-    packages=['semiparametrictransfer'],
+    packages=['imitation_learning'],
     license='MIT License',
 )

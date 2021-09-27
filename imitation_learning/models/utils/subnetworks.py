@@ -6,7 +6,7 @@ import torch.nn.functional as F
 
 from torch import Tensor
 
-from semiparametrictransfer.models.utils.layers import ConvBlockEnc, ConvBlockDec, Linear
+from imitation_learning.models.utils.layers import ConvBlockEnc, ConvBlockDec, Linear
 
 def init_weights_xavier(m):
     if isinstance(m, nn.Linear):

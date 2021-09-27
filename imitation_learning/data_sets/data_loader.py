@@ -4,12 +4,12 @@ import glob
 import h5py
 import random
 import imp
-from semiparametrictransfer.data_sets.data_utils.test_datasets import make_gifs
+from imitation_learning.data_sets.data_utils.test_datasets import make_gifs
 from torch.utils.data import DataLoader
 import os
-from semiparametrictransfer.utils.general_utils import Configurable
-from semiparametrictransfer.utils.general_utils import AttrDict, map_dict, resize_video
-from semiparametrictransfer.data_sets.data_augmentation import get_random_color_aug, get_random_crop
+from imitation_learning.utils.general_utils import Configurable
+from imitation_learning.utils.general_utils import AttrDict, map_dict, resize_video
+from imitation_learning.data_sets.data_augmentation import get_random_color_aug, get_random_crop
 
 class BaseVideoDataset(data.Dataset, Configurable):
     def __init__(self, data_conf, phase='train', shuffle=True):

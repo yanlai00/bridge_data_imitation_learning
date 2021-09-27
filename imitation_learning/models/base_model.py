@@ -1,15 +1,15 @@
 import os
 import torch
 import torch.nn as nn
-from semiparametrictransfer.utils.general_utils import AttrDict
+from imitation_learning.utils.general_utils import AttrDict
 import sys
 if sys.version_info[0] == 2:
     import cPickle as pkl
 else:
     import pickle as pkl
-from semiparametrictransfer.utils.general_utils import Configurable
-from semiparametrictransfer.utils.general_utils import move_to_device
-# from semiparametrictransfer.models.gcbc_transfer import GCBCTransfer
+from imitation_learning.utils.general_utils import Configurable
+from imitation_learning.utils.general_utils import move_to_device
+# from imitation_learning.models.gcbc_transfer import GCBCTransfer
 
 class BaseModel(nn.Module, Configurable):
     def __init__(self, override_params, logger):

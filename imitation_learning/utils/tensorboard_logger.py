@@ -1,13 +1,13 @@
 import os
 import pdb
 import torchvision
-from semiparametrictransfer.utils.vis_utils import draw_text_image
-from semiparametrictransfer.utils.general_utils import select_indices
+from imitation_learning.utils.vis_utils import draw_text_image
+from imitation_learning.utils.general_utils import select_indices
 import torch
 from tensorboardX import SummaryWriter
 import numpy as np
 import copy
-from semiparametrictransfer.utils.general_utils import np_unstack
+from imitation_learning.utils.general_utils import np_unstack
 
 class Logger:
     def __init__(self, log_dir, n_logged_samples=10, summary_writer=None):
@@ -140,13 +140,13 @@ def assemble_videos_kbestmatches(current_img, goal_img, best_matches_images, per
     return videos
 
 
-import semiparametrictransfer
+import imitation_learning
 
 class Mujoco_Renderer():
     def __init__(self, im_height, im_width):
         from mujoco_py import load_model_from_path, MjSim
 
-        mujoco_xml = '/'.join(str.split(semiparametrictransfer.__file__, '/')[:-1]) \
+        mujoco_xml = '/'.join(str.split(imitation_learning.__file__, '/')[:-1]) \
                      + '/environments/tabletop/assets/sawyer_xyz/sawyer_multiobject_textured.xml'
 
         self.sim = MjSim(load_model_from_path(mujoco_xml))

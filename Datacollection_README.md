@@ -31,7 +31,7 @@ But be careful to catch the robot arm because it will collapse.
 
 ## collection script:
 ```source activate py2```
-```(py2) datacol@fermat:~/interbotix_ws/src/semiparametrictransfer$ python semiparametrictransfer/run_data_collection.py  experiments/control/widowx/vr_record_applied_actions/conf.py --prefix bww_grasp_pen```
+```(py2) datacol@fermat:~/interbotix_ws/src/imitation_learning$ python imitation_learning/run_data_collection.py  experiments/control/widowx/vr_record_applied_actions/conf.py --prefix bww_grasp_pen```
 
 if script cannot be cancelled with ctrl-c use, use ctrl-z
 

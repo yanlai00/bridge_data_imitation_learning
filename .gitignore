@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-semiparametrictransfer/config.py
+imitation_learning/config.py
 *.idea
 *.sif
 *.img

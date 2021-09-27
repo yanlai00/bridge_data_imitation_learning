@@ -33,18 +33,18 @@ then run
 
 ## Data collection
 To collect the source data (picking gatorade bottle and holding it over the bowl) run:
-`python semiparametrictransfer/run_control_experiment.py experiments/control/widowx/sim/pick_only_gatorade/conf.py`
+`python imitation_learning/run_control_experiment.py experiments/control/widowx/sim/pick_only_gatorade/conf.py`
 
 Collect data for lifting objects over a bowl with a random viewpoint, selecting 2 out of 5 objects randomly:
-`python semiparametrictransfer/run_control_experiment.py experiments/control/widowx/sim/randview_2out5obj_nogato/conf.py`
+`python imitation_learning/run_control_experiment.py experiments/control/widowx/sim/randview_2out5obj_nogato/conf.py`
 
 
 ## Training
 To train on the source task only run:
-`python semiparametrictransfer/train.py --path  experiments/modeltraining/widowx/sim/put_in_bowl/bc_fromscratch/conf.py`
+`python imitation_learning/train.py --path  experiments/modeltraining/widowx/sim/put_in_bowl/bc_fromscratch/conf.py`
 
 To jointly train on bridge and source data run:
-`python semiparametrictransfer/train.py --path  experiments/modeltraining/widowx/sim/put_in_bowl/transfer/conf.py`
+`python imitation_learning/train.py --path  experiments/modeltraining/widowx/sim/put_in_bowl/transfer/conf.py`
 
 To add the domain adverserial loss run:
-`python semiparametrictransfer/train.py --path  experiments/modeltraining/widowx/sim/put_in_bowl/transfer/camera_class/conf.py`
+`python imitation_learning/train.py --path  experiments/modeltraining/widowx/sim/put_in_bowl/transfer/camera_class/conf.py`

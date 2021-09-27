@@ -1,4 +1,4 @@
-from semiparametrictransfer_experiments.modeltraining.widowx.real.toy_kitchen_v0.bc_fromscratch import conf
+from imitation_learning_experiments.modeltraining.widowx.real.toy_kitchen_v0.bc_fromscratch import conf
 import os
 configuration = conf.configuration
 data_config = conf.data_config

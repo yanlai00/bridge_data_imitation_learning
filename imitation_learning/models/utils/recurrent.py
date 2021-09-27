@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from torch.autograd import Variable
-from semiparametrictransfer.models.utils.modelutils import init_weights
+from imitation_learning.models.utils.modelutils import init_weights
 
 class LSTM(nn.Module):
     def __init__(self, input_size, output_size, hidden_size, n_layers, batch_size):

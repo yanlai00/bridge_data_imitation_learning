@@ -1,5 +1,5 @@
-from semiparametrictransfer.utils.vis_utils import npy_to_gif, npy_to_mp4
-from semiparametrictransfer.utils.general_utils import np_unstack
+from imitation_learning.utils.vis_utils import npy_to_gif, npy_to_mp4
+from imitation_learning.utils.general_utils import np_unstack
 import numpy as np
 import os
 

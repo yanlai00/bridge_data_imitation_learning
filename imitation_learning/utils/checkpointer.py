@@ -4,7 +4,7 @@ import numpy as np
 import torch
 import sys
 import pipes
-from semiparametrictransfer.utils.general_utils import AttrDict, str2int
+from imitation_learning.utils.general_utils import AttrDict, str2int
 
 class CheckpointHandler:
     @staticmethod

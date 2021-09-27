@@ -1,9 +1,9 @@
 import os
-from semiparametrictransfer.models.gcbc_images import GCBCImages
+from imitation_learning.models.gcbc_images import GCBCImages
 import numpy as np
-from semiparametrictransfer.utils.general_utils import AttrDict
+from imitation_learning.utils.general_utils import AttrDict
 current_dir = os.path.dirname(os.path.realpath(__file__))
-from semiparametrictransfer_experiments.modeltraining.widowx.real.toy_kitchen_v0.dataset_lmdb import TOTAL_NUM_TASKS_ALIASING, bridge_data_config_aliasing, task_name_aliasing_dict
+from imitation_learning_experiments.modeltraining.widowx.real.toy_kitchen_v0.dataset_lmdb import TOTAL_NUM_TASKS_ALIASING, bridge_data_config_aliasing, task_name_aliasing_dict
 from widowx_envs.utils.datautils.lmdb_dataloader import LMDB_Dataset_Pandas
 
 configuration = AttrDict(

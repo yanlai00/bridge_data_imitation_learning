@@ -2,18 +2,18 @@ import numpy as np
 import torch
 import os
 import torch.nn as nn
-from semiparametrictransfer.models.utils.modelutils import get_one_hot
-from semiparametrictransfer.utils.general_utils import AttrDict
-from semiparametrictransfer.utils.general_utils import select_indices, trch2npy
-from semiparametrictransfer.models.base_model import BaseModel
-from semiparametrictransfer.models.utils.resnet import get_resnet_encoder
-from semiparametrictransfer.models.utils.gradient_reversal_layer import ReverseLayerF, compute_alpha
-from semiparametrictransfer.models.utils.subnetworks import ConvEncoder
-from semiparametrictransfer.models.utils.layers import BaseProcessingNet
-from semiparametrictransfer.utils.general_utils import np_unstack
-from semiparametrictransfer.models.utils.spatial_softmax import SpatialSoftmax
-from semiparametrictransfer.data_sets.data_augmentation import get_random_crop
-from semiparametrictransfer.utils.general_utils import npy2trch
+from imitation_learning.models.utils.modelutils import get_one_hot
+from imitation_learning.utils.general_utils import AttrDict
+from imitation_learning.utils.general_utils import select_indices, trch2npy
+from imitation_learning.models.base_model import BaseModel
+from imitation_learning.models.utils.resnet import get_resnet_encoder
+from imitation_learning.models.utils.gradient_reversal_layer import ReverseLayerF, compute_alpha
+from imitation_learning.models.utils.subnetworks import ConvEncoder
+from imitation_learning.models.utils.layers import BaseProcessingNet
+from imitation_learning.utils.general_utils import np_unstack
+from imitation_learning.models.utils.spatial_softmax import SpatialSoftmax
+from imitation_learning.data_sets.data_augmentation import get_random_crop
+from imitation_learning.utils.general_utils import npy2trch
 import cv2
 
 def get_tlen_from_padmask(padmask):

@@ -1,8 +1,8 @@
 import torch.nn as nn
 from functools import partial
-from semiparametrictransfer.utils.general_utils import HasParameters
+from imitation_learning.utils.general_utils import HasParameters
 import math
-from semiparametrictransfer.utils.general_utils import AttrDict
+from imitation_learning.utils.general_utils import AttrDict
 
 
 def init_weights_xavier(m):

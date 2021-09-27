@@ -1,11 +1,11 @@
 import torch
 import numpy as np
 import torch.nn as nn
-from semiparametrictransfer.utils.general_utils import AttrDict, trch2npy
-from semiparametrictransfer.models.gcbc_images import GCBCImages
-from semiparametrictransfer.models.base_model import BaseModel
-from semiparametrictransfer.models.utils.layers import BaseProcessingNet
-from semiparametrictransfer.models.utils.gradient_reversal_layer import ReverseLayerF, compute_alpha
+from imitation_learning.utils.general_utils import AttrDict, trch2npy
+from imitation_learning.models.gcbc_images import GCBCImages
+from imitation_learning.models.base_model import BaseModel
+from imitation_learning.models.utils.layers import BaseProcessingNet
+from imitation_learning.models.utils.gradient_reversal_layer import ReverseLayerF, compute_alpha
 import copy
 
 class GCBCTransfer(BaseModel):

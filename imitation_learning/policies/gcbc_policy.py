@@ -4,8 +4,8 @@ import os
 from widowx_envs.policies.policy import Policy
 import cv2
 import glob
-from semiparametrictransfer.utils.general_utils import AttrDict
-from semiparametrictransfer.utils.general_utils import np_unstack
+from imitation_learning.utils.general_utils import AttrDict
+from imitation_learning.utils.general_utils import np_unstack
 import json
 
 from widowx_envs.utils.datautils.raw2lmdb import crop_image
@@ -45,11 +45,11 @@ class BCPolicyStates(Policy):
         with open(conffile, 'r') as f:
             conf = json.load(f)
         if conf['train._hp'][stage]['model'] == 'GCBCImages':
-            from semiparametrictransfer.models.gcbc_images import GCBCImagesModelTest
+            from imitation_learning.models.gcbc_images import GCBCImagesModelTest
             model = GCBCImagesModelTest
             new_conf = conf['model_conf']
         elif conf['train._hp'][stage]['model'] == 'GCBCTransfer':
-            from semiparametrictransfer.models.gcbc_images import GCBCImagesModelTest
+            from imitation_learning.models.gcbc_images import GCBCImagesModelTest
             model = GCBCImagesModelTest
             new_conf = conf['model_conf']['shared_params']
             new_conf.update(conf['model_conf'][self._hp.get_sub_model])

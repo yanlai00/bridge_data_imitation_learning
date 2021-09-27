@@ -1,10 +1,10 @@
 import numpy as np
 import torch
 from visual_mpc.policy.policy import Policy
-from semiparametrictransfer.models.gcbc import GCBCModelTest
-from semiparametrictransfer.utils.general_utils import AttrDict
-from semiparametrictransfer.models.gcp import GCPModelTest
-from semiparametrictransfer.utils.general_utils import np_unstack
+from imitation_learning.models.gcbc import GCBCModelTest
+from imitation_learning.utils.general_utils import AttrDict
+from imitation_learning.models.gcp import GCPModelTest
+from imitation_learning.utils.general_utils import np_unstack
 
 class GCPPolicyStates(Policy):
     """

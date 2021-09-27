@@ -1,5 +1,5 @@
 import os
-from semiparametrictransfer.utils.general_utils import AttrDict
+from imitation_learning.utils.general_utils import AttrDict
 from widowx_envs.utils.datautils.lmdb_dataloader import LMDB_Dataset_Pandas, LMDB_Dataset_Success_Classifier
 
 TOTAL_NUM_TASKS=78

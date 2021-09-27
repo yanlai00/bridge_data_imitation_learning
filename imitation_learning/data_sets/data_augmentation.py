@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-from semiparametrictransfer.utils.general_utils import np_unstack
+from imitation_learning.utils.general_utils import np_unstack
 import torch
 
 def get_random_crop(images, size, center_crop=False):

@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 import sys
-from semiparametrictransfer.models.utils.orig_resnet.resnet import ResNet, BasicBlock, Bottleneck, model_urls
+from imitation_learning.models.utils.orig_resnet.resnet import ResNet, BasicBlock, Bottleneck, model_urls
 
 def repeat_weights(weights, new_channels):
     prev_channels = weights.shape[1]

@@ -3,11 +3,11 @@ import torch
 import random
 from tqdm import tqdm
 import copy
-from semiparametrictransfer.utils.general_utils import AttrDict
-# from semiparametrictransfer.data_sets.robonet_dataloader import FilteredRoboNetDataset
-from semiparametrictransfer.utils.general_utils import Configurable
-from semiparametrictransfer.data_sets.data_augmentation import get_random_color_aug, get_random_crop
-from semiparametrictransfer.utils.general_utils import select_indices
+from imitation_learning.utils.general_utils import AttrDict
+# from imitation_learning.data_sets.robonet_dataloader import FilteredRoboNetDataset
+from imitation_learning.utils.general_utils import Configurable
+from imitation_learning.data_sets.data_augmentation import get_random_color_aug, get_random_crop
+from imitation_learning.utils.general_utils import select_indices
 import os
 
 

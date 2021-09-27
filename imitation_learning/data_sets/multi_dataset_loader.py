@@ -1,5 +1,5 @@
 import torch.utils.data as data
-from semiparametrictransfer.utils.general_utils import AttrDict
+from imitation_learning.utils.general_utils import AttrDict
 import time
 import hashlib
 import numpy as np

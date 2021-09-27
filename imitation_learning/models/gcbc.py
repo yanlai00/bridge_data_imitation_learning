@@ -3,10 +3,10 @@ import pdb
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from semiparametrictransfer.utils.general_utils import AttrDict
-from semiparametrictransfer.utils.general_utils import select_indices
-from semiparametrictransfer.models.base_model import BaseModel
-from semiparametrictransfer.models.utils.layers import BaseProcessingNet
+from imitation_learning.utils.general_utils import AttrDict
+from imitation_learning.utils.general_utils import select_indices
+from imitation_learning.models.base_model import BaseModel
+from imitation_learning.models.utils.layers import BaseProcessingNet
 
 class GCBCModel(BaseModel):
     """Semi parametric transfer model"""
