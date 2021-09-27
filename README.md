@@ -12,6 +12,7 @@ export DATA=<folder where the bridge dataset is stored>
 ```
 
 Setup conda environment by running
+
 `conda create --name bridgedata python=3.6.8 pip`
 `pip install -r requirements.txt`
 
