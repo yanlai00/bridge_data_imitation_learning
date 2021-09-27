@@ -17,7 +17,7 @@ sponge_wipe = AttrDict(
             random_crop=[96, 128],
             color_augmentation=0.1,
             image_size_beforecrop=[112, 144],
-            data_dir=os.environ['DATA'] + '/robonetv2/toykitchen_fixed_cam/realkitchen1_counter/',
+            data_dir=os.environ['DATA'] + '/robonetv2/toykitchen_fixed_cam/berkeley/realkitchen1_counter/',
             filtering_function=[lambda dframe: dframe[(dframe['policy_desc'] == 'human_demo, pick up sponge and wipe plate')]],
         )
 
