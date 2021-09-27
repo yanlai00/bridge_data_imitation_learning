@@ -19,7 +19,7 @@ then in this directory run
 
 `python setup.py develop`
 
-Clone the bridge data robot infrastructure repository and run
+Clone the  [bridge data robot infrastructure repository](https://github.com/yanlai00/bridge_data_robot_infra) and run
 
 `python setup.py develop`
 
