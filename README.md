@@ -1,6 +1,6 @@
 # Bridge Data Imitation Learning
 
-This is the accompanying code repository for the paper "Bridge Data: Boosting Generalization of Robotic Skills with Cross-Domain Datasets".
+This is the accompanying code repository for the paper "Bridge Data: Boosting Generalization of Robotic Skills with Cross-Domain Datasets" ([arXiv paper](https://arxiv.org/abs/2109.13396)). Here is the [project website](https://sites.google.com/view/bridgedata) where you can find more information about how to use and contribute to the dataset.
 
 ## Installation
 
